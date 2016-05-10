@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<ctml>
+  <validate reactions="no" species="yes"/>
+
+  <!-- gas phase     -->
+  <phase dim="3" id="gas">
+    <elementArray datasrc="elements.xml">C H O N S Cl P Ar</elementArray>
+    <speciesArray datasrc="data/nasa_gas2.xml#species_data">
+      C CH4 CO CO2
+      H H2 OH H2O  
+      O O2
+      N N2 NH3 HCN NO
+      S S2 SH H2S SO SO2 SO3 COS CS2 
+      CL CL2 HCL CLO SCL2
+      P2 PH3 PO PO2 P2O5 P3O6 P4O10 PCL3
+      Ar
+      <skip element="undeclared"/>
+    </speciesArray>
+    <state>
+      <temperature units="K">300.0</temperature>
+      <pressure units="Pa">101325.0</pressure>
+    </state>
+    <thermo model="IdealGas"/>
+    <kinetics model="GasKinetics"/>
+    <transport model="None"/>
+  </phase>
+
+  <!-- condensed phase     -->
+  <phase dim="3" id="solid">
+    <elementArray datasrc="elements.xml">Si Ca Al Fe Na K Mg Ti Cr C H O N S Cl</elementArray>
+    <speciesArray datasrc="data/nasa_condensed2.xml#species_data">
+      C(gr)
+      AL2O3(a) AL2SiO5(an) AL6Si2O13(s) ALN(s) ALCL3(s)
+      Ca(b) CaCL2(s) CaS(s) CaSO4(s) CaO(s) CaO2H2(s)
+      Fe(c) FeS(a) FeO(s) Fe2O3(s) Fe3O4(s) FeCL2(s)
+      K(cr) KCN(s) KCL(s) K2O(s) K2CO3(s) K2S(3) K2SO4(b)
+      MgAL2O4(s) MgO(s) MgSO4(s) MgSiO3(II) Mg2SiO4(s) MgS(s) MgCL2(s)
+      Na2O(c) Na2CO3(II) NaCL(s) NaALO2(b) NaCN(s) Na2SO4(I)
+      Si(cr) SiC(b) SiO2(hqz) Si2N2O(s) Si3N4(a)
+      TiO2(ru) Ti2O3(a) TiN(s) TiC(s) TiCL3(s)
+      Cr(cr) Cr2O3(s) CrN(s) Cr2N(s)
+      <skip element="undeclared"/>
+    </speciesArray>
+    <state>
+      <temperature units="K">300.0</temperature>
+      <pressure units="Pa">101325.0</pressure>
+    </state>
+    <thermo model="IdealGas"/>
+    <kinetics model="GasKinetics"/>
+    <transport model="None"/>
+  </phase>
+
+  <!-- species definitions     -->
+  <speciesData id="species_data"/>
+  <reactionData id="reaction_data"/>
+</ctml>
