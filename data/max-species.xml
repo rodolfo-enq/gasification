@@ -5,7 +5,7 @@
   <!-- gas phase     -->
   <phase dim="3" id="gas">
     <elementArray datasrc="elements.xml">C H O N S Cl P Ar</elementArray>
-    <speciesArray datasrc="nasa_gas.xml#species_data">all
+    <speciesArray datasrc="nasa_gas2.xml#species_data">all
       <skip element="undeclared"/>
     </speciesArray>
     <state>
@@ -20,7 +20,7 @@
   <!-- condensed phase     -->
   <phase dim="3" id="solid">
     <elementArray datasrc="elements.xml">Si Ca Al Fe Na K Mg P Ti C H O N S Cl</elementArray>
-    <speciesArray datasrc="nasa_condensed.xml#species_data">all
+    <speciesArray datasrc="nasa_condensed2.xml#species_data">all
       <skip element="undeclared"/>
     </speciesArray>
     <state>
