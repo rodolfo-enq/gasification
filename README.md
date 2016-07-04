@@ -5,7 +5,7 @@ Python library for gasification processes using Cantera package
 
 **Equilibrium model**
 
-RODRIGUES, R.; MUNIZ, A. R.; MARCILIO, N. R. Evaluation of biomass and coal co-gasification of Brazilian feedstock using a chemical equilibrium model. *Brazilian Journal of Chemical Engineering*, 2015. (Accepted for publication).
+RODRIGUES, R.; MUNIZ, A. R.; MARCILIO, N. R. Evaluation of biomass and coal co-gasification of Brazilian feedstock using a chemical equilibrium model. *Brazilian Journal of Chemical Engineering*, Vol. 33, No. 2, p. 401-414, 2016.
 
 ```
 @Article{Rodrigues2015a,
@@ -13,8 +13,11 @@ RODRIGUES, R.; MUNIZ, A. R.; MARCILIO, N. R. Evaluation of biomass and coal co-g
   equilibrium model},
   Author = {Rodrigues, R. and Muniz, A. R. and Marcilio, N. R.},
   Journal = {Brazilian Journal of Chemical Engineering},
-  Year = {2015},
-  Note = {(Accepted for publication)}
+  Volume = 33,
+  Number = 2,
+  Pages = {401-414}
+  Year = 2016,
+  Doi = {10.1590/0104-6632.20160332s00003479}
 }
 ```
 
@@ -27,7 +30,7 @@ RODRIGUES, R. *Combined kinetic and equilibrium modeling to simulation of gasifi
   Title = {Combined kinetic and equilibrium modeling to simulation of gasification processes},
   Author = {Rodrigues, R.},
   School = {Department of Chemical Engineering. Federal University of Rio Grande do Sul},
-  Year = {2015},
+  Year = 2015,
   Address = {Porto Alegre, Brazil},
   Note = {(in Portuguese)}
   Url = {http://hdl.handle.net/10183/140478}
