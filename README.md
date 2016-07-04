@@ -26,7 +26,7 @@ RODRIGUES, R.; MUNIZ, A. R.; MARCILIO, N. R. Evaluation of biomass and coal co-g
 RODRIGUES, R. *Combined kinetic and equilibrium modeling to simulation of gasification processes*. PhD-thesis. Department of Chemical Engineering. Federal University of Rio Grande do Sul. Porto Alegre, Brazil, 2015. (in Portuguese) URL: http://hdl.handle.net/10183/140478
 
 ```
-@PhdThesis{Rodrigues2015b,
+@PhdThesis{Rodrigues2015,
   Title = {Combined kinetic and equilibrium modeling to simulation of gasification processes},
   Author = {Rodrigues, R.},
   School = {Department of Chemical Engineering. Federal University of Rio Grande do Sul},
