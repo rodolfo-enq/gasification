@@ -383,14 +383,14 @@ def equilibrate_hp(self, hfo, fuel, mw, moisture=zero, air=zero, steam=zero,
                 T_err0 = T_err # update value!
             iters += 1 # counter
             if iters == 200:
-                print 'maximum number of iterations reached'
+                print('maximum number of iterations reached')
                 break
             if disp == 2: 
-                print 'T = %4.2f, T_err = %0.4g, iters = %2.0f' %(guess,
-                                                                  T_err,iters)
+                print('T = %4.2f, T_err = %0.4g, iters = %2.0f' %(guess,
+                                                                  T_err,iters))
         if disp == 1:
-            print 'T = %4.2f, T_err = %0.4g, iters = %2.0f' %(guess,
-                                                              T_err,iters)
+            print('T = %4.2f, T_err = %0.4g, iters = %2.0f' %(guess,
+                                                              T_err,iters))
         T = f.T
         outlet = f.species_moles
     else:
@@ -1001,7 +1001,8 @@ def coprocessing(self, fuel_id, blend, moisture, T, P=1.0,
 #    minimum_species = []
     # start calculations
     for i in range(n_0-1): # asssumed 1st fuel as coal
-        csvfile = open(str(fuel_id[0]) + '-' + str(fuel_id[i+1]) + '.csv','w')
+        csvfile = open(str(fuel_id[0]) + '-' + str(fuel_id[i+1]) + '.csv','w',
+                       newline='')
         f = csv.writer(csvfile)
         f.writerow(['% BR','% MC','T (C)','P (atm)','ER','SR','O/C',
                     'H/C'] + species + ['H2/CO','% CC','Y (Nm3/kg)',
@@ -1061,8 +1062,8 @@ def coprocessing(self, fuel_id, blend, moisture, T, P=1.0,
 #                                                              eps=1e-6)
         csvfile.close()
 #        print minimum_species
-        print 'Blend #' + str(i+1) + ' (' + str(fuel_id[0]) + '-' \
-              + str(fuel_id[i+1]) + '): DONE'                    
+        print('Blend #' + str(i+1) + ' (' + str(fuel_id[0]) + '-' \
+              + str(fuel_id[i+1]) + '): DONE')
     return None
 
 def coprocessing1(self, fuel_id, blend, moisture, T, P=1.0,
@@ -1121,7 +1122,7 @@ def coprocessing1(self, fuel_id, blend, moisture, T, P=1.0,
     """
     # convert all values to array
     blend *= one
-    moisture *= one
+    moisture = moisture*one
     T *= one
     air *= one
     O2 *= one
@@ -1133,7 +1134,8 @@ def coprocessing1(self, fuel_id, blend, moisture, T, P=1.0,
     n_1 = np.size(blend)    
     # start calculations
     for i in range(n_0-1): # asssumed 1st fuel as coal
-        csvfile = open(str(fuel_id[0]) + '-' + str(fuel_id[i+1]) + '.csv','w')
+        csvfile = open(str(fuel_id[0]) + '-' + str(fuel_id[i+1]) + '.csv','w',
+                       newline='')
         f = csv.writer(csvfile)
         f.writerow(['% BR','% MC','T (C)','P (atm)','ER','SR','O/C',
                     'H/C'] + species + ['H2/CO','% CC','Y (Nm3/kg)',
@@ -1182,6 +1184,6 @@ def coprocessing1(self, fuel_id, blend, moisture, T, P=1.0,
             f.writerow([100*blend[j], 100*moisture[j], T[j], P, ER_, SR_, 
                         oc, hc] + list(100*syngas) + [h2co, cc, y, hhv, eff])
         csvfile.close()
-        print 'Blend #' + str(i+1) + ' (' + str(fuel_id[0]) + '-' \
-              + str(fuel_id[i+1]) + '): DONE'                    
+        print('Blend #' + str(i+1) + ' (' + str(fuel_id[0]) + '-' \
+              + str(fuel_id[i+1]) + '): DONE')
     return None

@@ -21,7 +21,7 @@ import csv
 import pp
 fuels = 'fuels.csv'
 
-with open(fuels,'rb') as f:
+with open(fuels,'r') as f:
     myID = []
     rownum = 0
     for row in csv.reader(f):
@@ -77,7 +77,7 @@ def moisture(self):
         Moisture fraction [kg/kg]
     """
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idIndex = np.zeros((nf), dtype=object) # start value
         moist = np.zeros(nf) # start value
         for i in range(nf):
@@ -95,7 +95,7 @@ def moisture(self):
         if nf == 1:
             return float(moist)/100
         else:
-            return moist.astype('Float64')/100
+            return moist.astype('float64')/100
     f.close()   
     
     
@@ -126,7 +126,7 @@ def ash(self):
     and chemical composition and classification. Fuel. v. 105, p. 40-76, 2013.
     """
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idIndex = np.zeros((nf), dtype=object) # start value
         frac = np.zeros(nf) # start value
         comp = np.zeros((nf,11))
@@ -206,7 +206,7 @@ def ash(self):
             frac = float(frac)/100
             comp = comp/comp.sum
         else:
-            frac = frac.astype('Float64')/100
+            frac = frac.astype('float64')/100
             comp /= comp.sum(axis=1)[:, np.newaxis]
     f.close()
     return {'fraction':frac, 'composition':comp}
@@ -227,7 +227,7 @@ def fixed_carbon(self):
         Fixed carbon fraction [kg/kg]
     """
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idIndex = np.zeros(nf) # start value
         fixedcarb = np.zeros(nf) # start value
         for i in range(nf):
@@ -245,12 +245,12 @@ def fixed_carbon(self):
         if nf == 1:
             return float(fixedcarb)/100
         else:
-            return fixedcarb.astype('Float64')/100
+            return fixedcarb.astype('float64')/100
     f.close()
 
 def volatile(self):
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idIndex = np.zeros(nf) # start value
         volat = np.zeros(nf) # start value
         for i in range(nf):
@@ -267,7 +267,7 @@ def volatile(self):
         if nf == 1:
             return float(volat)/100
         else:
-            return volat.astype('Float64')/100
+            return volat.astype('float64')/100
     f.close()
 
 def HHV(self):
@@ -287,7 +287,7 @@ def HHV(self):
         Higher heating value, HHV [MJ/kg, d.b.]
     """
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idIndex = np.zeros(nf) # start value
         hhv = np.zeros(nf) # start value
         for i in range(nf):
@@ -307,7 +307,7 @@ def HHV(self):
         if nf == 1:
             hhv = float(hhv)
         else:
-            hhv = hhv.astype('Float64')
+            hhv = hhv.astype('float64')
     f.close()
     return hhv
 
@@ -328,7 +328,7 @@ def LHV(self):
         Lower heating value, d.b., LHV [MJ/kg, d.b.]
     """
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idIndex = np.zeros(nf) # start value
         lhv = np.zeros(nf) # start value
         for i in range(nf):
@@ -346,7 +346,7 @@ def LHV(self):
         if nf == 1:
             lhv = float(lhv)
         else:
-            lhv = lhv.astype('Float64')
+            lhv = lhv.astype('float64')
     f.close()
     return lhv
 
@@ -422,7 +422,7 @@ def C(self):
         Carbon fraction [kg/kg]
     """
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idx = np.zeros((nf), dtype=object) # start value
         c = np.zeros(nf) # start value
         for i in range(nf):
@@ -440,12 +440,12 @@ def C(self):
         if nf == 1:
             return float(c)/100
         else:
-            return c.astype('Float64')/100
+            return c.astype('float64')/100
     f.close()
 
 def H(self):
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idx = np.zeros((nf), dtype=object) # start value
         h = np.zeros(nf) # start value
         for i in range(nf):
@@ -463,12 +463,12 @@ def H(self):
         if nf == 1:
             return float(h)/100
         else:
-            return h.astype('Float64')/100
+            return h.astype('float64')/100
     f.close()
 
 def O(self):
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idx = np.zeros((nf), dtype=object) # start value
         o = np.zeros(nf) # start value
         for i in range(nf):
@@ -486,12 +486,12 @@ def O(self):
         if nf == 1:
             return float(o)/100
         else:
-            return o.astype('Float64')/100
+            return o.astype('float64')/100
     f.close()
 
 def N(self):
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idx = np.zeros((nf), dtype=object) # start value
         n = np.zeros(nf) # start value
         for i in range(nf):
@@ -509,12 +509,12 @@ def N(self):
         if nf == 1:
             return float(n)/100
         else:
-            return n.astype('Float64')/100
+            return n.astype('float64')/100
     f.close()
 
 def S(self):
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idx = np.zeros((nf), dtype=object) # start value
         s = np.zeros(nf) # start value
         for i in range(nf):
@@ -532,12 +532,12 @@ def S(self):
         if nf == 1:
             return float(s)/100
         else:
-            return s.astype('Float64')/100
+            return s.astype('float64')/100
     f.close()
 
 def Cl(self):
     nf = len(self) # number of fuels at the list (self)
-    with open(fuels,'rb') as f:
+    with open(fuels,'r') as f:
         idx = np.zeros((nf), dtype=object) # start value
         cl = np.zeros(nf) # start value
         for i in range(nf):
@@ -555,7 +555,7 @@ def Cl(self):
         if nf == 1:
             return float(cl)/100
         else:
-            return cl.astype('Float64')/100
+            return cl.astype('float64')/100
     f.close()
     
 def fraction(self):

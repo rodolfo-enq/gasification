@@ -95,7 +95,7 @@ def mole_of_atoms(self, F, mole0=None):
                         *(F/self.mean_molecular_weight*self.X[i])
     # verify element balance
     if mole0 != None and np.amax(np.abs((mole-mole0)/mole0)) > 0.01:
-        print "Warning: Element balance is inconsistent! (dev>1.0%)"
+        print('Warning: Element balance is inconsistent! (dev>1.0%)')
     return mole
 
 def equilibrium_reactor(self, F, P, T=None, energy='on', 
@@ -174,7 +174,7 @@ def cstr0(self, F, P, V, T=None, dt=2.0, t=None, disp=0):
             if residual > rel_tol:
                 all_done = False
                 break
-        if disp == True: print 'Residual: %1.3e' %(residual)
+        if disp == True: print('Residual: %1.3e' %(residual))
     return self, time, residual
     
 def cstr(self, F, P, V, T=None, dt=10.0, t=None, disp=0):
@@ -216,7 +216,7 @@ def cstr(self, F, P, V, T=None, dt=10.0, t=None, disp=0):
         # at steady-state (accumulation = zero)
         # or at very large time
         if residual <= abs_tol*1e3 or time >= 1e8: done = 0
-        if disp == True: print 'Residual: %1.3e' %(residual)
+        if disp == True: print('Residual: %1.3e' %(residual))
 #    print(self.report())
     return self, time, residual
 
@@ -263,7 +263,7 @@ def cstr1(self, F, P, V, T=None, dt=10.0, t=1e20,
         # at final time
         if t != None and time >= t: done = 0
         if residual <= abs_tol: done = 0
-        if disp == True: print 'Residual: %1.3e' %(residual)
+        if disp == True: print('Residual: %1.3e' %(residual))
     data.close()
     return None
 
@@ -296,8 +296,8 @@ def ss_isot_pfr(self, F, P, V, T, L, N):
     z0 = 0.0 # initial z
     # get state at z0
     contents[0,:] = get_contents(self)
-    print 'N=%3i P=%4.2f T=%7.2f r=%1.3e' %(1, P[0]/Pn, T[0]-273.15, 
-                                            np.sum(self.net_production_rates))
+    print('N=%3i P=%4.2f T=%7.2f r=%1.3e' %(1, P[0]/Pn, T[0]-273.15, 
+                                            np.sum(self.net_production_rates)))
     # choose integrator(solver)
     r = ode(f).set_integrator('vode', method='bdf', 
         atol=abs_tol, rtol=rel_tol, nsteps=nstep, with_jacobian=True)
@@ -313,9 +313,9 @@ def ss_isot_pfr(self, F, P, V, T, L, N):
         self.TPY = T[i], P[i], r.y
         # save values
         contents[i,:] = get_contents(self)
-        print 'N=%3i P=%4.2f T=%7.2f r=%1.3e' %(i+1, P[i]/Pn, T[i]-273.15, 
+        print('N=%3i P=%4.2f T=%7.2f r=%1.3e' %(i+1, P[i]/Pn, T[i]-273.15, 
                                                 np.sum(
-                                                self.net_production_rates))
+                                                self.net_production_rates)))
         i += 1
     return self, length, contents
 
@@ -344,8 +344,8 @@ def ss_nonisot_pfr(self, F, P, V, L, N):
     # get state at z=0   
     contents[0,:] = get_contents(self)
 #    contents[0,:] = self.TPY
-    print 'N=%3i P=%4.2f T=%7.2f r=%1.3e' %(1, P[0]/Pn, self.T-273.15, 
-                                            np.sum(self.net_production_rates))
+    print('N=%3i P=%4.2f T=%7.2f r=%1.3e' %(1, P[0]/Pn, self.T-273.15, 
+                                            np.sum(self.net_production_rates)))
     # choose integrator(solver)
     r = ode(f).set_integrator('vode', method='bdf', 
         atol=abs_tol, rtol=rel_tol, nsteps=nstep, 
@@ -363,9 +363,9 @@ def ss_nonisot_pfr(self, F, P, V, L, N):
         # save values
         contents[i,:] = get_contents(self)
 #        contents[i,:] = self.TPY
-        print 'N=%3i P=%4.2f T=%7.2f r=%1.3e' %(i+1, P[i]/Pn, self.T-273.15, 
+        print('N=%3i P=%4.2f T=%7.2f r=%1.3e' %(i+1, P[i]/Pn, self.T-273.15,
                                                 np.sum(
-                                                self.net_production_rates))
+                                                self.net_production_rates)))
         i += 1
     return self, length, contents
     
@@ -412,7 +412,7 @@ def series_reactors(self, F, P, V, N, T=None,
     # check up
     for i in range(N):
         if kinetic[i] == 0 and reactor[i] == 1:
-            print 'N='+str(i+1)+', You cannot have an equilibrium PFR'
+            print('N='+str(i+1)+', You cannot have an equilibrium PFR')
             break
 #        if reactor[i] == 0:
 #            if L[i] != 0:
@@ -438,7 +438,7 @@ def series_reactors(self, F, P, V, N, T=None,
     for i in range(N):
         if i > 0:
             self.TDY = reservoir.thermo.TDY
-        print 'Inlet reactor #'+str(i+1)
+        print('Inlet reactor #'+str(i+1))
 #        print(self.report())
         if kinetic[i] == 0:
             self = equilibrium_reactor(self, F, P[i+1], T[i+1])
@@ -448,7 +448,7 @@ def series_reactors(self, F, P, V, N, T=None,
             else: # pfr
                 self, l, content = pfr(self, F, P[i+1], V[i], T[i+1], 
                                        L[i], ND[i])
-        print 'Outlet reactor #'+str(i+1)
+        print('Outlet reactor #'+str(i+1))
 #        print(self.report())
         # save values
 #        contents[i+1,:] = get_contents(self)
@@ -463,8 +463,8 @@ def series_reactors(self, F, P, V, N, T=None,
         reservoir.thermo.TDY = self.TDY
         # report
         if disp == True:
-            print 'N=%3i,  P=%4.2f atm,  V=%5.3f m^3,  T=%4.2f C' %(i+1, 
-                                   self.P/ct.one_atm, V[i], self.T-273.15)
+            print('N=%3i,  P=%4.2f atm,  V=%5.3f m^3,  T=%4.2f C' %(i+1, 
+                                   self.P/ct.one_atm, V[i], self.T-273.15))
     # stop to measure simulation time spent
     return {'state': self, 'F': F, 'P': P, 'V': V, 'T': T, 'X': X, 'Y': Y,
             'time spent': clock() - t0_sim, 'residence time': tau, 
