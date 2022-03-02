@@ -4,7 +4,7 @@
 processes. It uses some predefined functions from Cantera package.
 
 @author = Rodolfo Rodrigues
-@contact = rodolfo@unipampa.edu.br
+@contact = rodolfo.rodrigues@ufsm.br
 @data = April, 2012, rev.: June, 2013 (adapted to use cython Cantera)
 """
 #==============================================================================
