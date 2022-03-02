@@ -6,7 +6,7 @@ The definition of phases must be done here. This file is necessary to
 other scripts.
 
 @author = Rodolfo Rodrigues
-@contact = rodolfo@unipampa.edu.br
+@contact = rodolfo.rodrigues@ufsm.br
 @data = April, 2012, rev.: June, 2013 (adapted to use cython Cantera)
 """
 #==============================================================================
