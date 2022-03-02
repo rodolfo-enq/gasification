@@ -4,7 +4,7 @@
 provided by Cantera package.
 
 @author = Rodolfo Rodrigues
-@contact = rodolfo@unipampa.edu.br
+@contact = rodolfo.rodrigues@ufsm.br
 @data = September, 2012, rev.: June, 2013 (adapted to use cython Cantera)
 """
 #==============================================================================
