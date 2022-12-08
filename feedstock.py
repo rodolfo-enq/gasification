@@ -57,7 +57,7 @@ with open(fuels,'r') as f:
             so3Index = header.index('SO3')
             cr2o3Index = header.index('Cr2O3')
         else:
-            myID = np.append(myID,row[0])
+            myID = np.append(myID, row[0])
         rownum += 1
     f.close()
 
@@ -204,7 +204,7 @@ def ash(self):
         # define type of variable as scalar or array
         if nf == 1:
             frac = float(frac)/100
-            comp = comp/comp.sum
+            comp = comp/comp.sum()
         else:
             frac = frac.astype('float64')/100
             comp /= comp.sum(axis=1)[:, np.newaxis]
@@ -564,15 +564,20 @@ def fraction(self):
     '''
     nf = len(self) # number of fuels at the list (self)
     ## get values
-    ash_ = np.array(ash(self)['fraction'])
+    ash_ = np.array(ash(self)['fraction']) if (nf > 1) else np.array([ash(self)['fraction']])
     ash_i = np.array(ash(self)['composition'])
     ## preallocate variable
     massf = np.zeros((nf, 6))
     xmass = np.zeros((nf, 17))
-    for i in range(nf):
-        massf[i,:] = np.array(( C(self)[i], H(self)[i], 
-                                O(self)[i], N(self)[i],
-                                S(self)[i], Cl(self)[i] ))
+    if (nf > 1):   
+        for i in range(nf):
+            massf[i,:] = np.array((C(self)[i], H(self)[i],
+                                   O(self)[i], N(self)[i],
+                                   S(self)[i], Cl(self)[i]))
+    else:
+        massf[0,:] = np.array((C(self), H(self),
+                               O(self), N(self),
+                               S(self), Cl(self)))
     for i in range(nf):
         for j in range(6):
             massf[i,j] = (1.0 - ash_[i])*massf[i,j]
